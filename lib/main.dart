@@ -20,21 +20,26 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routerConfig: GoRouter(routes: [
-        GoRoute(
-          path: "/",
-          builder: (context, state) => const ColorAppHomePage(),
-        ),
-        GoRoute(
-          path: "/red",
-          builder: (context, state) => const ColorDetailPage(color: Colors.red),
-        ),
-        GoRoute(
-          path: "/blue",
-          builder: (context, state) =>
-              const ColorDetailPage(color: Colors.blue),
-        ),
-      ]),
+      routerConfig: GoRouter(
+        routes: [
+          GoRoute(
+            path: "/",
+            builder: (context, state) => const ColorAppHomePage(),
+          ),
+          GoRoute(
+            path: "/red",
+            builder: (context, state) =>
+                const ColorDetailPage(color: Colors.red),
+          ),
+          GoRoute(
+            path: "/blue",
+            builder: (context, state) =>
+                const ColorDetailPage(color: Colors.blue),
+          ),
+        ],
+        initialLocation: "/",
+        errorBuilder: (context, state) => ColorAppHomePage(),
+      ),
     );
   }
 }
