@@ -56,7 +56,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>https://temperate-attesting.000webhostapp.com/</string> <!-- Replace with your custom scheme -->
+                <string>temperate-attesting.000webhostapp.com</string> <!-- Replace with your custom scheme -->
             </array>
         </dict>
     </array>
