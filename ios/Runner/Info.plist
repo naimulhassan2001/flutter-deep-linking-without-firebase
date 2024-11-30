@@ -41,25 +41,34 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-
-
-	<key>CFBundleURLTypes</key>
+	<key>OneSignal_suppress_launch_urls</key>
+    <true/>
+    <key>CFBundleURLTypes</key>
     <array>
         <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>temperate-attesting.000webhostapp.com</string> <!-- Replace with your custom scheme -->
+                <string>https</string></string>
+                <string>web.xpart.top</string>
             </array>
         </dict>
     </array>
+     <key>com.apple.developer.associated-domains</key>
+      <array>
+        <string>applinks:web.xpart.top</string>
+      </array>
+
+      <key>NSAppTransportSecurity</key>
+      <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+      </dict>
+      <key>FlutterDeepLinkingEnabled</key>
+      <true/>
 
 
 

@@ -1,4 +1,4 @@
-package com.makan.deep_linking_flutter
+package com.residco.resid
 
 import io.flutter.embedding.android.FlutterActivity
 

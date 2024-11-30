@@ -30,7 +30,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="https"
-                    android:host="temperate-attesting.000webhostapp.com" />
+                    android:host="web.xpart.top"
+
+                    />
             </intent-filter>
 
         </activity>

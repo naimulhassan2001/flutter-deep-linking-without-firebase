@@ -1,10 +1,16 @@
+import 'package:app_links/app_links.dart';
 import 'package:deep_linking_flutter/pages/color_app_home_page.dart';
-import 'package:deep_linking_flutter/pages/color_detail_page.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
+
+import 'applink.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  DeepLinkService().initDeepLinking();
+  final uri = AppLinks(); // AppLinks is singleton
+  var url = await uri.getInitialLink();
+  print("url : ${url}");
   runApp(const MyApp());
 }
 
@@ -13,33 +19,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Deep Linking Flutter',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      routerConfig: GoRouter(
-        routes: [
-          GoRoute(
-            path: "/",
-            builder: (context, state) => const ColorAppHomePage(),
-          ),
-          GoRoute(
-            path: "/red",
-            builder: (context, state) =>
-                const ColorDetailPage(color: Colors.red),
-          ),
-          GoRoute(
-            path: "/blue",
-            builder: (context, state) =>
-                const ColorDetailPage(color: Colors.blue),
-          ),
-        ],
-        initialLocation: "/",
-        errorBuilder: (context, state) => ColorAppHomePage(),
-      ),
+      home: ColorAppHomePage(),
     );
   }
 }
