@@ -1,16 +1,15 @@
-import 'package:app_links/app_links.dart';
+import 'package:deep_linking_flutter/applink.dart';
 import 'package:deep_linking_flutter/pages/color_app_home_page.dart';
+import 'package:deep_linking_flutter/pages/color_detail_page.dart';
+import 'package:deep_linking_flutter/pages/details.dart';
+import 'package:deep_linking_flutter/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'applink.dart';
+import 'package:go_router/go_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  DeepLinkService().initDeepLinking();
-  final uri = AppLinks(); // AppLinks is singleton
-  var url = await uri.getInitialLink();
-  print("url : ${url}");
+
   runApp(const MyApp());
 }
 
@@ -19,10 +18,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Deep Linking Flutter',
-      home: ColorAppHomePage(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const ColorAppHomePage(),
     );
   }
 }

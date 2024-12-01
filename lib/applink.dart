@@ -1,30 +1,30 @@
-import 'package:uni_links/uni_links.dart';
+import 'package:app_links/app_links.dart';
+import 'package:deep_linking_flutter/pages/details.dart';
+import 'package:deep_linking_flutter/pages/profile.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class DeepLinkService {
-  // Method to initialize deep link handling
-  void initDeepLinking() async {
-    // Check for deep link when the app is first opened
-    try {
-      // This will check if the app was opened via a deep link
-      String? initialLink = await getInitialLink();
-      if (initialLink != null) {
-        _handleDeepLink(initialLink);
-      }
+String appUrl = '';
+String path = '';
 
-      // Listen for any deep links that happen while the app is in the foreground
-      linkStream.listen((String? link) {
-        if (link != null) {
-          _handleDeepLink(link);
-        }
-      });
-    } catch (e) {
-      print('Error initializing deep link: $e');
-    }
+appLinks() async {
+  final uri = AppLinks();
+  var url = await uri.getInitialLink();
+  path = url?.path ?? " ";
+  appUrl = url.toString();
+
+  print("url");
+  print(url);
+  if (path == "/details") {
+    Get.to(() => const Details());
   }
 
-  // Method to handle deep links
-  void _handleDeepLink(String link) {
-    print('Deep link received: $link');
-    // Perform actions based on the deep link URL here
+  if (path == "/profile") {
+    Get.to(() => const Profile());
   }
+  print(path);
+  print(url.runtimeType);
+
+  return url;
 }
